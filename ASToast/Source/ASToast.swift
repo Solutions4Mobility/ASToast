@@ -284,7 +284,9 @@ public extension UIView {
         if !title.isEmpty {
             titleLabel = UILabel()
             titleLabel.numberOfLines = Constants.ASToastMaxTitleLines
-            titleLabel.font = UIFont.boldSystemFont(ofSize: Constants.ASToastFontSize)
+            
+            titleLabel.font = UIFont(name: "DINNextRoundedLTPro-Medium", size: 20)
+            //UIFont.boldSystemFont(ofSize: Constants.ASToastFontSize)
             titleLabel.textAlignment = NSTextAlignment.center
             titleLabel.textColor = UIColor.white
             titleLabel.backgroundColor = UIColor.clear
@@ -301,7 +303,7 @@ public extension UIView {
         if !message.isEmpty {
             messageLabel = UILabel()
             messageLabel.numberOfLines = Constants.ASToastMaxMessageLines
-            messageLabel.font = UIFont.systemFont(ofSize: Constants.ASToastFontSize)
+            messageLabel.font = UIFont(name: "DINNextRoundedLTPro-Medium", size: 20)
             messageLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
             messageLabel.textColor = UIColor.white
             messageLabel.backgroundColor = UIColor.clear
