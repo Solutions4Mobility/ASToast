@@ -69,7 +69,6 @@
 		A401BE741DF5E73C00A4FDC0 /* ASToastFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ASToastFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A401BE761DF5E73C00A4FDC0 /* ASToastFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASToastFramework.h; sourceTree = "<group>"; };
 		A401BE771DF5E73C00A4FDC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A42C74A51D44D18400076FEE /* ASToastTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ASToastTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		A446C4221B28979C00C891AF /* ASToast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASToast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A446C4261B28979C00C891AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A446C4271B28979C00C891AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -197,7 +196,6 @@
 			children = (
 				A46571AB1D44E5B300B71E2A /* Resources */,
 				A446C43B1B28979C00C891AF /* Supporting Files */,
-				A42C74A51D44D18400076FEE /* ASToastTests-Bridging-Header.h */,
 				A495A9CB1D56020E001AC594 /* ASToastTests.swift */,
 			);
 			path = ASToastTests;
@@ -279,6 +277,7 @@
 				F06466A78DD8527BD1963968 /* [CP] Embed Pods Frameworks */,
 				4187234E267640E0E7E39AAC /* [CP] Copy Pods Resources */,
 				A401BE801DF5E73C00A4FDC0 /* Embed Frameworks */,
+				A4ACECDD1E354885008E8254 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -448,6 +447,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		A4ACECDD1E354885008E8254 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint lint --config .swiftlint.yml\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		C7B9CA12CB4FE7B25059B4C2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -738,7 +751,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.abdullahselek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ASToastTests/ASToastTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASToast.app/ASToast";
@@ -759,7 +772,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.abdullahselek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ASToastTests/ASToastTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASToast.app/ASToast";
 			};

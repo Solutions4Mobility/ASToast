@@ -2,20 +2,22 @@
 ![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ASToast.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Coverage Status](https://coveralls.io/repos/github/abdullahselek/ASToast/badge.svg?branch=master)](https://coveralls.io/github/abdullahselek/ASToast?branch=master)
+![Platform](https://img.shields.io/cocoapods/p/ASToast.svg?style=flat)
+![License](https://img.shields.io/dub/l/vibe-d.svg)
 
 # ASToast
 A Swift extension for using Android style Toast notifications. You may call ASToast methods directly from your view objects.
 
-# Screenshots
+## Screenshots
 
 ![single_toast](https://github.com/abdullahselek/ASToast/blob/master/images/astoast_singletoast.png)
 ![image_toast](https://github.com/abdullahselek/ASToast/blob/master/images/astoast_image_title_text_toast.png)
 ![activity_toast](https://github.com/abdullahselek/ASToast/blob/master/images/astoast_activity.png)
 
-# Requirements
+## Requirements
 iOS 8.0+
 
-# CocoaPods
+## CocoaPods
 
 CocoaPods is a dependency manager for Cocoa projects. You can install it with the following command:
 ```	
@@ -38,14 +40,14 @@ platform :ios, '8.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'ASToast', '~> 1.0.5'
+    pod 'ASToast', '~> 1.0.9'
 end
 ```
 Then, run the following command:
 ```
 $ pod install
 ```
-# Carthage
+## Carthage
 
 Carthage is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
 
@@ -59,47 +61,80 @@ brew install carthage
 To integrate ASToast into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```
-github "abdullahselek/ASToast" ~> 1.0.5
+github "abdullahselek/ASToast" ~> 1.0.9
 ```
 
 Run carthage update to build the framework and drag the built ASToast.framework into your Xcode project.
 
-# Example Usage
+## Example Usage
 
-make a toast with single text
-```objc
-self.view.makeToast("Single text toast", backgroundColor: UIColor.blueColor())
+make a toast with single text with default background color and custom message color
 ```
-or to use default black color
-```objc
-self.view.makeToast("Single text toast", backgroundColor: nil)
+self.view.makeToast(message: "Single text toast",
+					backgroundColor: nil,
+					messageColor: UIColor.cyan)
 ```
-make a toast with text, title, position and duration
-```objc
-self.view.makeToast("Toast with custom text, title and duration", duration: NSTimeInterval(3.0), 
-    	position: ASToastPosition.ASToastPositionCenter.rawValue, title: "Title", backgroundColor: UIColor.blueColor())
+make a toast with custom background color white message color
+```
+self.view.makeToast(message: "Single text toast",
+					backgroundColor: UIColor.blue,
+					messageColor: nil)
+```
+make a toast with text, title, position, duration and custom colors
+```
+self.view.makeToast(message: "Toast with custom text, title and duration",
+					duration: TimeInterval(3.0),
+					position: .center,
+					title: "Title",
+					backgroundColor: UIColor.blue,
+					titleColor: UIColor.yellow,
+					messageColor: UIColor.yellow,
+					font: UIFont.systemFont(ofSize: 16))
 ``` 	
-make toast with an image
-```objc
-self.view.makeToast("Toast with an image", duration: NSTimeInterval(3.0), 
-		position: ASToastPosition.ASToastPositionTop.rawValue, 
-		image: UIImage(named: "apple_logo"), backgroundColor: UIColor.blueColor())
+make toast with an image and custom colors
+```
+self.view.makeToast(message: "Toast with an image",
+					duration: TimeInterval(3.0),
+					position: .top,
+					image: UIImage(named: "apple_logo"),
+					backgroundColor: UIColor.blue,
+					titleColor: UIColor.yellow,
+					messageColor: UIColor.yellow,
+					font: UIFont.systemFont(ofSize: 16))
 ```	
 Show a custom view as toast
-```objc
-var customView: UIView! = UIView(frame: CGRectMake(0.0, 0.0, 200.0, 300.0))
-customView.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin | 
-		UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleBottomMargin
-customView.backgroundColor = UIColor.greenColor()
-self.view.showToast(customView, duration: NSTimeInterval(3.0), position: ASToastPosition.ASToastPositionCenter.rawValue)
 ```
-	
+let customView: UIView! = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 300.0))
+customView.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin,
+							   UIViewAutoresizing.flexibleRightMargin,
+							   UIViewAutoresizing.flexibleTopMargin,
+							   UIViewAutoresizing.flexibleBottomMargin]
+customView.backgroundColor = UIColor.green
+
+self.view.showToast(toastView: customView,
+					duration: TimeInterval(3.0),
+					position: .bottom)
+```
+
+Show an imageView as toast, on center at point (110,110)
+```
+let toastImageView: UIImageView! = UIImageView(image: UIImage(named: "apple_logo"))
+self.view.showToast(toastView: toastImageView,
+					duration: TimeInterval(3.0),
+					point: CGPoint(x: 110, y: 110))
+```
+
 Show activity indicator
-```objc
+```
 self.view.makeToastActivity()
 ```
+
+Hide activity indicator
+```
+self.view.hideToastActivity()
+```
 	
-# MIT License
+## MIT License
 ```
 Copyright (c) 2015 Abdullah Selek
 
@@ -122,7 +157,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-# Credits
+## Credits
 ```
 Inspired from Charles Scalesse (scalessec). Improved and all coded in new programming 
 language Swift.

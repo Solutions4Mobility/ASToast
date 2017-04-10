@@ -13,288 +13,401 @@ import Nimble
 @testable import ASToast
 
 class ASToastTests: QuickSpec {
-    
+
     override func spec() {
-        describe(".makeToast with single text") {
-            context("Toast view display success") {
-                it("set a valid message") {
+        describe("-makeToast") {
+            context("with just a message and message color") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("TEST", backgroundColor: nil)
+                    view!.makeToast(message: "TEST",
+                                    backgroundColor: nil,
+                                    messageColor: UIColor.cyan)
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
-            context("Toast view display fails") {
-                it("set a empty message") {
+            context("with an empty message and background color") {
+                it("should not display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("", backgroundColor: UIColor.green)
+                    view!.makeToast(message: "",
+                                    backgroundColor: UIColor.green,
+                                    messageColor: nil)
                     expect(view?.subviews.count).to(equal(0))
                 }
             }
-        }
-        describe(".makeToast with message, duration, position") {
-            context("Toast view display success with 3 parameters") {
-                it("set valid message, duration and position") {
+            context("with message, duration, background and message color") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("TEST", duration: TimeInterval(3.0),
-                                   position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
-                                   backgroundColor: nil)
-                    expect(view?.subviews.count).to(equal(1))
-                }
-            }
-            context("Toast view display success with 3 parameters when position is invalid") {
-                it("set a invalid position, valid text and duration") {
-                    let viewController = UIViewController()
-                    let view = viewController.view
-                    view!.makeToast("TEST", duration: TimeInterval(3.0), position: nil,
-                                   backgroundColor: UIColor.blue)
-                    expect(view?.subviews.count).to(equal(1))
-                }
-            }
-            context("Toast view display fails with 3 parameters when text is empty") {
-                it("set a empty text, valid duration and valid position") {
-                    let viewController = UIViewController()
-                    let view = viewController.view
-                    view!.makeToast("",
+                    view!.makeToast(message: "TEST",
                                     duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
-                                    backgroundColor: UIColor.blue)
+                                    backgroundColor: UIColor.blue,
+                                    messageColor: UIColor.white)
+                    expect(view?.subviews.count).to(equal(1))
+                }
+            }
+            context("with message, duration, position, background - message color and font") {
+                it("should display a toast") {
+                    let viewController = UIViewController()
+                    let view = viewController.view
+                    view!.makeToast(message: "TEST",
+                                    duration: TimeInterval(3.0),
+                                    position: .top,
+                                    backgroundColor: UIColor.blue,
+                                    messageColor: UIColor.white,
+                                    font: UIFont.systemFont(ofSize: 16))
+                    expect(view?.subviews.count).to(equal(1))
+                }
+            }
+            context("with empty message, duration, position, title") {
+                it("should not display a toast") {
+                    let viewController = UIViewController()
+                    let view = viewController.view
+                    view!.makeToast(message: "",
+                                    duration: TimeInterval(3.0),
+                                    position: .bottom,
+                                    backgroundColor: UIColor.blue,
+                                    messageColor: UIColor.yellow,
+                                    font: UIFont.systemFont(ofSize: 16))
                     expect(view?.subviews.count).to(equal(0))
                 }
             }
-        }
-        describe(".makeToast with message, duration, position and title") {
-            context("Toast view diplays success with 4 valid parameters") {
-                it("set valid message, duration, position and title") {
+            context("with message, duration, position and title") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("TEST",
+                    view!.makeToast(message: "TEST",
                                     duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
+                                    position: .center,
                                     title: "TITLE",
-                                    backgroundColor: nil)
+                                    backgroundColor: nil,
+                                    titleColor: nil,
+                                    messageColor: nil,
+                                    font: nil)
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
-            context("Toast view display success with 4 parameters when text is empty") {
-                it("set empty message, duration, position and title") {
+            context("with message, duration, position, title, background - title - message color and font") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("",
+                    view!.makeToast(message: "",
                                     duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
+                                    position: .top,
                                     title: "TITLE",
-                                    backgroundColor: UIColor.blue)
+                                    backgroundColor: UIColor.blue,
+                                    titleColor: UIColor.cyan,
+                                    messageColor: UIColor.yellow,
+                                    font: UIFont.systemFont(ofSize: 16))
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
-            context("Toast view display success with 4 parameters when title is empty") {
-                it("set message, duration, position and empty title") {
+            context("with message, duration, position, title and background color") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("TEST",
+                    view!.makeToast(message: "TEST",
                                     duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
+                                    position: .bottom,
                                     title: "",
-                                    backgroundColor: UIColor.blue)
+                                    backgroundColor: UIColor.blue,
+                                    titleColor: nil,
+                                    messageColor: nil,
+                                    font: nil)
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
-            context("Toast view display success with 4 parameters when position empty") {
-                it("set message, duration, position and empty title") {
+            context("with message, duration, position, title, title - message color and font") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("TEST",
+                    view!.makeToast(message: "TEST",
                                     duration: TimeInterval(3.0),
-                                    position: "" as AnyObject,
+                                    position: .center,
                                     title: "TITLE",
-                                    backgroundColor: nil)
+                                    backgroundColor: nil,
+                                    titleColor: UIColor.cyan,
+                                    messageColor: UIColor.yellow,
+                                    font: UIFont.systemFont(ofSize: 16))
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
-            context("Toast view display fails with 4 parameters when mesage and title empty") {
-                it("set message, duration, position and empty title") {
+            context("with empty message, duration, position, empty title, backgroun color and font") {
+                it("should not display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("",
+                    view!.makeToast(message: "",
                                     duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
+                                    position: .top,
                                     title: "",
-                                    backgroundColor: UIColor.blue)
+                                    backgroundColor: UIColor.blue,
+                                    titleColor: nil,
+                                    messageColor: nil,
+                                    font: UIFont.systemFont(ofSize: 16))
                     expect(view?.subviews.count).to(equal(0))
                 }
             }
-        }
-        describe(".makeToast with message, duration, position and image") {
-            context("Toast view diplay success with 4 valid parameters") {
-                it("set valid message, duration, position and image") {
+            context("with message, duration, position, image, title - message color and font") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("TEST",
+                    view!.makeToast(message: "TEST",
                                     duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
+                                    position: .bottom,
                                     image: UIImage(named: "apple_logo.png"),
-                                    backgroundColor: nil)
+                                    backgroundColor: nil,
+                                    titleColor: UIColor.cyan,
+                                    messageColor: UIColor.yellow,
+                                    font: UIFont.systemFont(ofSize: 16))
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
-            context("Toast view diplay success with duration, position, image and empty message") {
-                it("set duration, position, image and empty message") {
+            context("with message, duration, position, image and background color") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("",
+                    view!.makeToast(message: "",
                                     duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
+                                    position: .center,
                                     image: UIImage(named: "apple_logo.png"),
-                                    backgroundColor: UIColor.blue)
+                                    backgroundColor: UIColor.blue,
+                                    titleColor: nil,
+                                    messageColor: nil,
+                                    font: nil)
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
-            context("Toast view diplay success with message, duration, image and empty position") {
-                it("set message, duration, position and empty image") {
+            context("with message, duration, image, title - message color and font") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("TEST",
+                    view!.makeToast(message: "TEST",
                                     duration: TimeInterval(3.0),
-                                    position: "" as AnyObject,
+                                    position: .top,
                                     image: UIImage(named: "apple_logo.png"),
-                                    backgroundColor: nil)
+                                    backgroundColor: nil,
+                                    titleColor: UIColor.cyan,
+                                    messageColor: UIColor.yellow,
+                                    font: UIFont.systemFont(ofSize: 16))
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
-            context("Toast view diplay fails with duration, position, empty message and image") {
-                it("set message, duration, position and empty image") {
+            context("with empty message, duration, position, background color and font") {
+                it("should not display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("",
+                    view!.makeToast(message: "",
                                     duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
+                                    position: .bottom,
                                     image: UIImage(named: ""),
-                                    backgroundColor: UIColor.blue)
+                                    backgroundColor: UIColor.blue,
+                                    titleColor: nil,
+                                    messageColor: nil,
+                                    font: UIFont.systemFont(ofSize: 16))
                     expect(view?.subviews.count).to(equal(0))
                 }
             }
-        }
-        describe(".makeToast with message, duration, position, title and image") {
-            context("Toast view diplay success with 5 valid parameters") {
-                it("set valid message, duration, position, title and image") {
+            context("with message, duration, position, image, title - message color and font") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("TEST",
+                    view!.makeToast(message: "TEST",
                                     duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
+                                    position: .center,
                                     title: "TITLE",
                                     image: UIImage(named: "apple_logo.png"),
-                                    backgroundColor: nil)
+                                    backgroundColor: nil,
+                                    titleColor: UIColor.cyan,
+                                    messageColor: UIColor.yellow,
+                                    font: UIFont.systemFont(ofSize: 16))
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
-            context("Toast view diplay success with message, duration, position, image and empty title") {
-                it("set valid message, duration, position, title and image") {
+            context("with message, duration, position, image, background color and font") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("TEST",
+                    view!.makeToast(message: "TEST",
                                     duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
+                                    position: .top,
                                     title: "",
                                     image: UIImage(named: "apple_logo.png"),
-                                    backgroundColor: UIColor.blue)
+                                    backgroundColor: UIColor.blue,
+                                    titleColor: nil,
+                                    messageColor: nil,
+                                    font: UIFont.systemFont(ofSize: 16))
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
-            context("Toast view diplay success with message, title, duration, position and empty image") {
-                it("set valid message, duration, position, title and image") {
+            context("with message, durationi position, title - message color and font") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
-                    view!.makeToast("TEST",
+                    view!.makeToast(message: "TEST",
                                     duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
-                                    title: "",
-                                    image: UIImage(named: ""),
-                                    backgroundColor: nil)
-                    expect(view?.subviews.count).to(equal(1))
-                }
-            }
-            context("Toast view diplay success with message, title, duration, image and empty position") {
-                it("set valid message, duration, position, title and image") {
-                    let viewController = UIViewController()
-                    let view = viewController.view
-                    view!.makeToast("TEST",
-                                    duration: TimeInterval(3.0),
-                                    position: "" as AnyObject,
-                                    title: "",
-                                    image: UIImage(named: ""),
-                                    backgroundColor: UIColor.blue)
-                    expect(view?.subviews.count).to(equal(1))
-                }
-            }
-            context("Toast view diplay success with duration, position, image and empty message, title") {
-                it("set valid message, duration, position, title and image") {
-                    let viewController = UIViewController()
-                    let view = viewController.view
-                    view!.makeToast("",
-                                    duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
-                                    title: "",
-                                    image: UIImage(named: "apple_logo.png"),
-                                    backgroundColor: UIColor.blue)
-                    expect(view?.subviews.count).to(equal(1))
-                }
-            }
-            context("Toast view diplay fails with duration, position and empty message, title, image") {
-                it("set valid message, duration, position, title and image") {
-                    let viewController = UIViewController()
-                    let view = viewController.view
-                    view!.makeToast("",
-                                    duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject,
+                                    position: .bottom,
                                     title: "",
                                     image: UIImage(named: ""),
-                                    backgroundColor: UIColor.blue)
+                                    backgroundColor: nil,
+                                    titleColor: UIColor.cyan,
+                                    messageColor: UIColor.yellow,
+                                    font: UIFont.systemFont(ofSize: 16))
+                    expect(view?.subviews.count).to(equal(1))
+                }
+            }
+            context("with message, duration, position, image, background color and font") {
+                it("should display a toast") {
+                    let viewController = UIViewController()
+                    let view = viewController.view
+                    view!.makeToast(message: "TEST",
+                                    duration: TimeInterval(3.0),
+                                    position: .center,
+                                    title: "",
+                                    image: UIImage(named: ""),
+                                    backgroundColor: UIColor.blue,
+                                    titleColor: nil,
+                                    messageColor: nil,
+                                    font: UIFont.systemFont(ofSize: 16))
+                    expect(view?.subviews.count).to(equal(1))
+                }
+            }
+            context("with duration, position, image, background - title - message color and font") {
+                it("should display a toast") {
+                    let viewController = UIViewController()
+                    let view = viewController.view
+                    view!.makeToast(message: "",
+                                    duration: TimeInterval(3.0),
+                                    position: .top,
+                                    title: "",
+                                    image: UIImage(named: "apple_logo.png"),
+                                    backgroundColor: UIColor.blue,
+                                    titleColor: UIColor.cyan,
+                                    messageColor: UIColor.yellow,
+                                    font: UIFont.systemFont(ofSize: 16))
+                    expect(view?.subviews.count).to(equal(1))
+                }
+            }
+            context("with empty message, duration, position, background color and font") {
+                it("should not display a toast") {
+                    let viewController = UIViewController()
+                    let view = viewController.view
+                    view!.makeToast(message: "",
+                                    duration: TimeInterval(3.0),
+                                    position: .bottom,
+                                    title: "",
+                                    image: UIImage(named: ""),
+                                    backgroundColor: UIColor.blue,
+                                    titleColor: nil,
+                                    messageColor: nil,
+                                    font: UIFont.systemFont(ofSize: 16))
                     expect(view?.subviews.count).to(equal(0))
                 }
             }
+            context("with message, duration, backgroundColor and messageColor") {
+                it("should display a toast", closure: {
+                    let viewController = UIViewController()
+                    let view = viewController.view
+                    view!.makeToast(message: "TEST",
+                                    duration: TimeInterval(3.0),
+                                    backgroundColor: UIColor.blue,
+                                    messageColor: UIColor.white)
+                    expect(view?.subviews.count).to(equal(1))
+                })
+            }
+            context("with message, title, duration, backgroundColor, titleColor and messageColor") {
+                it("should display a toast", closure: {
+                    let viewController = UIViewController()
+                    let view = viewController.view
+                    view!.makeToast(message: "TEST",
+                                    title: "TITLE",
+                                    backgroundColor: UIColor.blue,
+                                    titleColor: UIColor.yellow,
+                                    messageColor: UIColor.white,
+                                    font: UIFont.systemFont(ofSize: 16))
+                    expect(view?.subviews.count).to(equal(1))
+                })
+            }
+            context("with message, duration, title, duration, backgroundColor, titleColor and messageColor") {
+                it("should display a toast", closure: {
+                    let viewController = UIViewController()
+                    let view = viewController.view
+                    view!.makeToast(message: "TEST",
+                                    duration: TimeInterval(3.0),
+                                    title: "TITLE",
+                                    backgroundColor: UIColor.blue,
+                                    titleColor: UIColor.yellow,
+                                    messageColor: UIColor.white,
+                                    font: UIFont.systemFont(ofSize: 16))
+                    expect(view?.subviews.count).to(equal(1))
+                })
+            }
+            context("makeToast with message, background color, message color and font") {
+                it("should display a toast", closure: {
+                    let viewController = UIViewController()
+                    let view = viewController.view
+                    view?.makeToast(message: "MESSAGE",
+                                    backgroundColor: UIColor.blue,
+                                    messageColor: UIColor.white,
+                                    font: UIFont.systemFont(ofSize: 16))
+                    expect(view?.subviews.count).to(equal(1))
+                })
+            }
         }
-        describe(".showToast with view") {
-            context("Toast view display success with view") {
-                it("set valid view") {
+        describe("-showToast") {
+            context("with a view") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
                     let toastView = UIView()
-                    view!.showToast(toastView)
+                    view!.showToast(toastView: toastView)
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
-        }
-        describe(".showToast with toastView, duration, position") {
-            context("Toast view display success with toastView, duration and position") {
-                it("set valid toastView, duration and position") {
+            context("with view, duratiın and center position") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
                     let toastView = UIView()
-                    view!.showToast(toastView,
+                    view!.showToast(toastView: toastView,
                                     duration: TimeInterval(3.0),
-                                    position: ASToastPosition.ASToastPositionCenter.rawValue as AnyObject)
+                                    position: .center)
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
-            context("Toast view display success with toastView, duration and empty position") {
-                it("set valid toastView, duration and empty position") {
+            context("with view, duration and top position") {
+                it("should display a toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
                     let toastView = UIView()
-                    view!.showToast(toastView,
+                    view!.showToast(toastView: toastView,
                                     duration: TimeInterval(3.0),
-                                    position: "" as AnyObject)
+                                    position: .top)
                     expect(view?.subviews.count).to(equal(1))
                 }
             }
+            context("with view with point") {
+                it("should display a toast", closure: {
+                    let viewController = UIViewController()
+                    let view = viewController.view
+                    let toastView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
+                    view!.showToast(toastView: toastView, point: CGPoint(x: 10, y: 10))
+                    expect(view?.subviews.count).to(equal(1))
+                })
+            }
+            context("with view with duration and point") {
+                it("should display a toast", closure: {
+                    let viewController = UIViewController()
+                    let view = viewController.view
+                    let toastView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
+                    view!.showToast(toastView: toastView, duration: TimeInterval(3.0), point: CGPoint(x: 10, y: 10))
+                    expect(view?.subviews.count).to(equal(1))
+                })
+            }
         }
-        describe(".makeToastActivity") {
-            context("Toast Activity display success") {
-                it("Call makeToastActivity") {
+        describe("-makeToastActivity") {
+            context("when called") {
+                it("should display activity toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
                     view!.makeToastActivity()
@@ -302,9 +415,9 @@ class ASToastTests: QuickSpec {
                 }
             }
         }
-        describe(".hideToastActivity") {
-            context("Toast Activity dismiss success") {
-                it("Call hideToastActivity") {
+        describe("-hideToastActivity") {
+            context("when called") {
+                it("should hide activity toast") {
                     let viewController = UIViewController()
                     let view = viewController.view
                     view!.makeToastActivity()
@@ -314,5 +427,5 @@ class ASToastTests: QuickSpec {
             }
         }
     }
-    
+
 }
