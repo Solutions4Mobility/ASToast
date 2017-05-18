@@ -151,8 +151,8 @@ public extension UIView {
      * @param image Image for Toast
      */
     public func makeToast(_ message: String, duration: TimeInterval, position: AnyObject?,
-                          title: String, image: UIImage!, backgroundColor: UIColor?) {
-        let toastView = self.toastView(message, title: title, image: image, backgroundColor: backgroundColor)
+                          title: String, image: UIImage!, backgroundColor: UIColor?, isMultiLine: Bool = false ) {
+        let toastView = self.toastView(message, title: title, image: image, backgroundColor: backgroundColor, isMultiline: isMultiLine)
         self.showToast(toastView, duration: duration, position: position)
     }
     
@@ -230,7 +230,7 @@ public extension UIView {
      * @param title Title for Toast
      * @param image Image for Toast
      */
-    fileprivate func toastView(_ message: String, title: String, image: UIImage?, backgroundColor: UIColor?) -> UIView? {
+    fileprivate func toastView(_ message: String, title: String, image: UIImage?, backgroundColor: UIColor?, isMultiline: Bool = false) -> UIView? {
         // check parameters
         if message.isEmpty && title.isEmpty && image == nil {
             return nil
@@ -353,7 +353,7 @@ public extension UIView {
         let toastViewWidth = max(imageWidth + (Constants.ASToastHorizontalPadding * 2), (longerLeft + longerWidth + Constants.ASToastHorizontalPadding))
         let toastViewHeight = max(messageTop + messageHeight + Constants.ASToastVerticalPadding, (imageHeight + (Constants.ASToastVerticalPadding * 2)))
         
-        toastView.frame = CGRect(x: 0.0, y: 0.0, width: toastViewWidth, height: 56)
+        toastView.frame = CGRect(x: 0.0, y: 0.0, width: toastViewWidth, height: isMultiline ? 76 : 56)
         
         if titleLabel != nil {
             titleLabel.frame = CGRect(x: titleLeft, y: titleTop, width: titleWidth, height: titleHeight)
