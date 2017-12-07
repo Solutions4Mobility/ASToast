@@ -35,7 +35,7 @@ import QuartzCore
  */
 public struct Constants {
     // duration of view on screen
-    public static let ToastDuration = TimeInterval(0.0
+    public static let ToastDuration = TimeInterval(0.0)
 
     // view appearance
     public static let ToastMaxWidth = CGFloat(0.8)
@@ -162,14 +162,14 @@ public extension UIView {
                           position: ToastPosition,
                           backgroundColor: UIColor?,
                           messageColor: UIColor?,
-                          font: UIFont?) {
+                          font: UIFont?, isMultiLine: Bool = false) {
         guard let toastView = self.toastView(message: message,
                                        title: "",
                                        image: nil,
                                        backgroundColor: backgroundColor,
                                        titleColor: nil,
                                        messageColor: messageColor,
-                                       font: font) else {
+                                       font: font, isMultiline: isMultiLine) else {
                                         return
         }
         self.showToast(toastView: toastView,
@@ -610,7 +610,7 @@ public extension UIView {
                                backgroundColor: UIColor?,
                                titleColor: UIColor?,
                                messageColor: UIColor?,
-                               font: UIFont?) -> UIView? {
+                               font: UIFont?, isMultiline: Bool = false) -> UIView? {
         // check parameters
         if message.isEmpty && title.isEmpty && image == nil {
             return nil
@@ -648,7 +648,7 @@ public extension UIView {
         toastView.frame = CGRect(x: 0.0,
                                  y: 0.0,
                                  width: toastViewWidth,
-                                 height: 56)
+                                 height: isMultiline ? 76 : 56)
 
         if let titleLabel = titleLbl {
             titleLabel.frame = CGRect(x: titleLeft,
