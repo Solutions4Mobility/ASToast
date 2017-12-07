@@ -21,6 +21,10 @@
 		A4CC19F71D27C9F00078E4C2 /* ASToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC19F61D27C9F00078E4C2 /* ASToast.swift */; };
 		C786FCDAFEAEACE15A027A82 /* Pods_ASToastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14F30A42DD71C6A35798B03 /* Pods_ASToastTests.framework */; };
 		E739B41E099065CAC91BACD0 /* Pods_ASToast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA1FA5C918167B5A113EDB /* Pods_ASToast.framework */; };
+		FA8B1B741FD926EF000F51BF /* DINNextRoundedLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA8B1B701FD926EF000F51BF /* DINNextRoundedLTPro-Bold.otf */; };
+		FA8B1B751FD926EF000F51BF /* DINNextRoundedLTPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA8B1B711FD926EF000F51BF /* DINNextRoundedLTPro-Light.otf */; };
+		FA8B1B761FD926EF000F51BF /* DINNextRoundedLTPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA8B1B721FD926EF000F51BF /* DINNextRoundedLTPro-Medium.otf */; };
+		FA8B1B771FD926EF000F51BF /* DINNextRoundedLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA8B1B731FD926EF000F51BF /* DINNextRoundedLTPro-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +80,10 @@
 		EB5EFDF7BC6A107C92DB2C80 /* Pods-ASToastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASToastTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ASToastTests/Pods-ASToastTests.release.xcconfig"; sourceTree = "<group>"; };
 		F14F30A42DD71C6A35798B03 /* Pods_ASToastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASToastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F67BF347ED1E82D102670492 /* Pods-ASToastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASToastTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ASToastTests/Pods-ASToastTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA8B1B701FD926EF000F51BF /* DINNextRoundedLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextRoundedLTPro-Bold.otf"; sourceTree = "<group>"; };
+		FA8B1B711FD926EF000F51BF /* DINNextRoundedLTPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextRoundedLTPro-Light.otf"; sourceTree = "<group>"; };
+		FA8B1B721FD926EF000F51BF /* DINNextRoundedLTPro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextRoundedLTPro-Medium.otf"; sourceTree = "<group>"; };
+		FA8B1B731FD926EF000F51BF /* DINNextRoundedLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextRoundedLTPro-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +160,7 @@
 		A446C4241B28979C00C891AF /* ASToast */ = {
 			isa = PBXGroup;
 			children = (
+				FA8B1B6F1FD926EF000F51BF /* DINN Rounded */,
 				A4CC19F41D27C9D20078E4C2 /* Source */,
 				A446C4271B28979C00C891AF /* AppDelegate.swift */,
 				A446C4291B28979C00C891AF /* ViewController.swift */,
@@ -212,6 +221,17 @@
 				F14F30A42DD71C6A35798B03 /* Pods_ASToastTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA8B1B6F1FD926EF000F51BF /* DINN Rounded */ = {
+			isa = PBXGroup;
+			children = (
+				FA8B1B701FD926EF000F51BF /* DINNextRoundedLTPro-Bold.otf */,
+				FA8B1B711FD926EF000F51BF /* DINNextRoundedLTPro-Light.otf */,
+				FA8B1B721FD926EF000F51BF /* DINNextRoundedLTPro-Medium.otf */,
+				FA8B1B731FD926EF000F51BF /* DINNextRoundedLTPro-Regular.otf */,
+			);
+			path = "DINN Rounded";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +369,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A446C42D1B28979C00C891AF /* Main.storyboard in Resources */,
+				FA8B1B741FD926EF000F51BF /* DINNextRoundedLTPro-Bold.otf in Resources */,
+				FA8B1B771FD926EF000F51BF /* DINNextRoundedLTPro-Regular.otf in Resources */,
+				FA8B1B751FD926EF000F51BF /* DINNextRoundedLTPro-Light.otf in Resources */,
+				FA8B1B761FD926EF000F51BF /* DINNextRoundedLTPro-Medium.otf in Resources */,
 				A446C4321B28979C00C891AF /* LaunchScreen.xib in Resources */,
 				A446C42F1B28979C00C891AF /* Images.xcassets in Resources */,
 			);

@@ -515,7 +515,7 @@ public extension UIView {
         let titleLabel: UILabel
         titleLabel = UILabel()
         titleLabel.numberOfLines = Constants.ToastMaxTitleLines
-        titleLabel.font = UIFont.boldSystemFont(ofSize: Constants.ToastFontSize)
+        titleLabel.font = UIFont(name: "DINNextRoundedLTPro-Medium", size: 20)
         titleLabel.textAlignment = NSTextAlignment.center
         titleLabel.textColor = titleColor != nil ? titleColor : UIColor.white
         titleLabel.backgroundColor = UIColor.clear
