@@ -35,7 +35,7 @@ import QuartzCore
  */
 public struct Constants {
     // duration of view on screen
-    public static let ToastDuration = TimeInterval(3)
+    public static let ToastDuration = TimeInterval(0.2)
 
     // view appearance
     public static let ToastMaxWidth = CGFloat(0.8)
@@ -485,7 +485,7 @@ public extension UIView {
         if image != nil {
             imageView = UIImageView(image: image)
             imageView.contentMode = UIViewContentMode.scaleAspectFit
-            imageView.frame = CGRect(x: Constants.ToastHorizontalPadding, y: Constants.ToastVerticalPadding, width: Constants.ToastImageViewWidth, height: Constants.ToastImageViewHeight)
+            imageView.frame = CGRect(x: Constants.ToastHorizontalPadding, y: Constants.ToastVerticalPadding, width: 24, height: 24)
             return imageView
         }
         return nil
