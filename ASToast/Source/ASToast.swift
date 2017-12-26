@@ -297,14 +297,14 @@ public extension UIView {
                           backgroundColor: UIColor?,
                           titleColor: UIColor?,
                           messageColor: UIColor?,
-                          font: UIFont?) {
+                          font: UIFont?, isMultiline: Bool = false) {
         guard let toastView = self.toastView(message: message,
                                              title: "",
                                              image: image,
                                              backgroundColor: backgroundColor,
                                              titleColor: titleColor,
                                              messageColor: messageColor,
-                                             font: font) else {
+                                             font: font, isMultiline: isMultiline) else {
                                         return
         }
         self.showToast(toastView: toastView,
