@@ -353,7 +353,7 @@ public extension UIView {
         let toastViewWidth = max(imageWidth + (Constants.ASToastHorizontalPadding * 2), (longerLeft + longerWidth + Constants.ASToastHorizontalPadding))
         let toastViewHeight = max(messageTop + messageHeight + Constants.ASToastVerticalPadding, (imageHeight + (Constants.ASToastVerticalPadding * 2)))
         
-        toastView.frame = CGRect(x: 0.0, y: 0.0, width: toastViewWidth, height: isMultiline ? 76 : 56)
+        toastView.frame = CGRect(x: 0.0, y: 0.0, width: toastViewWidth, height: isMultiline ? 96 : 56)
         
         if titleLabel != nil {
             titleLabel.frame = CGRect(x: titleLeft, y: titleTop, width: titleWidth, height: titleHeight)
